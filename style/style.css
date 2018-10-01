@@ -14,7 +14,7 @@ header{
     color:#ffffff;
     background-color: #222b30;
     position:fixed;
-    z-index:100;
+    z-index:1001;
     width:100%;
     
 }
@@ -40,20 +40,20 @@ a:hover{
 }
 .bgImg2{
     background-image: url("./images/cars/car2.jpg");
-    min-height: 100%;
+    height: 100%;
 }
 .bgImg1{
     background-image: url("./images/cars/car1.jpg");
-    min-height: 100%;
+    height: 100%;
 }
 .bgImg3{
     background-image: url("./images/cars/car3.jpg");
-    min-height: 100%;
+    height: 100%;
     
 }
 .bgImg4{
     background-image: url("./images/cars/car4.jpg");
-    min-height: 100%;
+    height: 100%;
     
 }
 .bgImg5{
@@ -63,10 +63,66 @@ a:hover{
 }
 
 .bgImg6{
-    background:linear-gradient(to right, rgb(255, 0, 0), rgb(72, 8, 6));
-    min-height: 100%;
+    background:linear-gradient(to right, rgb(245, 244, 64), rgb(177, 255, 0));
+    height: 100%;
    opacity:1;
 }
+.arrow1::after{
+    content:"";
+    position:absolute;
+    top:100px;
+    left:100px;
+    height:45px;
+    width:5px;
+    background-color:black;
+    transform:rotate(-70deg);
+    animation:move 1s infinite;
+  }
+  .arrow1::before{
+    content:"";
+    position:absolute;
+    top:100px;
+    left:140px;
+    height:45px;
+    width:5px;
+    transform:rotate(70deg);
+    background-color:black;
+     animation:move 1s infinite;
+  }
+  .arrow2::after{
+    content:"";
+    position:absolute;
+    top:110px;
+    left:100px;
+    height:45px;
+    width:5px;
+    background-color:black;
+    transform:rotate(-70deg);
+     animation:move 1s infinite;
+  }
+  .arrow2::before{
+    content:"";
+    position:absolute;
+    top:110px;
+    left:140px;
+    height:45px;
+    width:5px;
+    transform:rotate(70deg);
+    background-color:black;
+     animation:move 1s infinite;
+  }
+  
+  @keyframes move{
+    0%{
+      background-color:grey;
+    }
+    50%{
+      background-color:gray;
+    }
+    100%{
+        background-color:black;
+    }
+  }
 .caption{
     position: absolute;
     left: 0;
@@ -74,6 +130,7 @@ a:hover{
     width: 100%;
     text-align: center;
     color: #000;
+    animation:scaleUp 0.5s ease-out 1;
 }
 .border
 {
@@ -95,14 +152,39 @@ a:hover{
     overflow: auto;
 }
 .contactList{
-    
+    background:linear-gradient(to right, rgb(245, 244, 64), rgb(177, 255, 0));
     padding: 1rem 1rem 1rem 1rem;
-   
+    min-height:232px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-around;
 }
 .setContactBox{
-    float:left;
-    padding: 1.5rem 5rem 1.5rem 7rem;
+    float: left;
+    perspective: 600px;
+    cursor: pointer;
+    height:200px;
+    position: relative;
+    min-width: 200px;
+    animation:scaleUp 2s linear;
 }
+
+
+
+.setFlip{
+  height: 100%;
+  position: absolute;
+  top:0%;
+  display:flex;
+  flex-wrap:wrap;
+   align-items: center;
+  transform-style: preserve-3d;
+  transition: all 1s ease-in-out;
+  width: 100%;
+}
+.setFlip:hover {
+    transform: rotateY(180deg);
+  }
 .maps{
    clear:both;
    background-image: url("../style/images/maps/map1.png");
@@ -114,11 +196,10 @@ a:hover{
     justify-content: flex-start;
     align-items: center;
     top:95%;
-    height:10vh;
     color:#ffffff;
     background-color: #222b30;
     position:sticky;
-    z-index:100;
+    z-index:1001;
     width:100%;
 }
 @media(max-width:600px){
@@ -150,4 +231,28 @@ a:hover{
     border:5px solid black;
     padding:2em;
     
+}
+.setFlip .side{
+  backface-visibility: hidden;
+  border-radius: 6px;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+.setFlip .back{
+    background: lightsteelblue;
+    position: relative;
+    border:3px solid black;
+    color: black;
+    text-align: center;
+    transform: rotateY(180deg);
+}
+@keyframes scaleUp{
+
+    0%{
+        transform:scale(0.5);
+    }
+    100%{
+        transform:scale(1);
+    }
 }
